@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciar Vendas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Inserir Nova Venda</h1>
+    <form id="saleForm">
+      <label for="product_id">ID do Produto:</label>
+      <input type="text" id="product_id" name="product_id" required>
+
+      <label for="quantity">Quantidade:</label>
+      <input type="number" id="quantity" name="quantity" required>
+
+      <label for="total_price">Preço Total (R$):</label>
+      <input type="number" step="0.01" id="total_price" name="total_price" required>
+
+      <button type="submit">Inserir Venda</button>
+    </form>
+
+    <div id="responseMessage" class="response-message"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",   // Use CommonJS para compatibilidade com Node.js
+    "target": "ES6",        // Ou superior, dependendo da sua versão do Node.js
+    "outDir": "./dist",     // Saída para a pasta dist
+    "rootDir": "./src",     // Código fonte dentro da pasta src
+    "esModuleInterop": true, // Necessário para importação de módulos do Node
+    "strict": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}
