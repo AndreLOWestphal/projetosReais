@@ -1,81 +1,85 @@
-# Gerenciador de Reuniões
+# Prática 10 - Projeto de Gerenciamento de Reuniões
 
-## Visão Geral
+## Introdução
 
-O **Gerenciador de Reuniões** é uma aplicação web desenvolvida para facilitar o processo de agendamento e gestão de reuniões dentro de empresas e equipes. A aplicação permite que os usuários registrem reuniões, atualizem informações importantes como horário e participantes, e excluam reuniões com facilidade. Essa ferramenta visa otimizar o fluxo de trabalho, eliminando a necessidade de ferramentas externas para agendamento e proporcionando uma interface intuitiva e responsiva.
-
-### Objetivo do Projeto
-
-O objetivo deste projeto é criar uma plataforma que permita aos usuários gerenciar as reuniões de forma eficaz e dinâmica, proporcionando uma experiência prática e intuitiva. A interface foi projetada para ser simples, mas robusta, permitindo a rápida inserção e visualização de dados, com um backend que garante a persistência e a integridade das informações.
+Este projeto tem como objetivo a criação de um sistema para gerenciar reuniões, permitindo aos usuários adicionar, atualizar, listar e deletar reuniões de maneira intuitiva e simples. O sistema foi desenvolvido utilizando **React** para o front-end, com comunicação via API para um backend que simula a persistência das reuniões.
 
 ## Tecnologias Utilizadas
 
-A escolha das tecnologias foi focada em garantir escalabilidade, desempenho e uma excelente experiência para o usuário final. As principais tecnologias utilizadas foram:
+🛠️ **Front-End**:
+- **React**: Framework JavaScript para criar interfaces de usuário interativas.
+- **Axios**: Biblioteca para realizar requisições HTTP para o backend.
+- **useState e useEffect (React)**: Hooks do React para gerenciar o estado e realizar operações assíncronas.
 
-- **React.js**: Utilizado como biblioteca principal para o desenvolvimento da interface de usuário. O React permite a criação de interfaces dinâmicas e reativas, com componentes reutilizáveis, facilitando a manutenção e escalabilidade da aplicação.
+💻 **Backend (Simulado)**:
+- **API REST**: Utilizada para simular as operações de manipulação de reuniões (adicionar, listar, atualizar e deletar).
+- **JSON**: Para armazenamento dos dados temporários das reuniões no backend.
 
-- **Axios**: Biblioteca que facilita a realização de requisições HTTP. Foi usada para integrar a aplicação frontend com o backend, permitindo que os dados sejam enviados e recebidos de maneira eficiente e assíncrona.
+## Como o Sistema Funciona
 
-- **JavaScript (ES6+)**: A base de toda a lógica de frontend, utilizando os recursos modernos do JavaScript, como async/await para requisições assíncronas, manipulação de arrays e strings, e o hook `useState` do React para gerenciar o estado da aplicação.
+O sistema permite que os usuários interajam com uma interface que oferece quatro opções principais:
 
-- **Backend (Express.js)**: Embora não detalhado neste repositório, o backend da aplicação é uma API RESTful construída com **Node.js** e **Express.js**. Ele é responsável por receber as requisições, processá-las e realizar operações de CRUD em um banco de dados relacional ou NoSQL, como MongoDB.
+- **Adicionar Reunião**: O usuário pode cadastrar uma nova reunião, informando o título, hora de início, hora de término e participantes.
+- **Atualizar Reunião**: O usuário pode editar uma reunião existente, alterando os dados como título, hora de início, hora de término e participantes.
+- **Listar Reuniões**: Exibe todas as reuniões registradas, com informações sobre o título, horário e participantes.
+- **Deletar Reunião**: O usuário pode excluir uma reunião específica, utilizando o ID da reunião.
 
-- **API REST**: Utilizada para a comunicação entre o frontend e o backend, permitindo que as informações sobre as reuniões sejam enviadas, recebidas e manipuladas por meio de endpoints HTTP (GET, POST, PUT, DELETE).
+### Fluxo de Funcionamento:
 
-## Funcionalidades
+1. **Adicionar Reunião**:
+   O usuário preenche os campos de título, hora de início, hora de fim e participantes. Após o envio do formulário, os dados são convertidos e enviados para o backend, que simula o armazenamento da reunião.
 
-A aplicação possui diversas funcionalidades que permitem ao usuário gerenciar eficientemente as reuniões:
+2. **Atualizar Reunião**:
+   Para atualizar uma reunião, o usuário fornece o ID da reunião que deseja modificar. Após localizar a reunião, ele pode atualizar as informações.
 
-1. **Adicionar Reuniões**: O usuário pode adicionar novas reuniões fornecendo informações como título, horário de início e término, e participantes. O sistema trata a entrada de dados, especialmente no campo de participantes, garantindo que o formato enviado para o backend seja adequado.
+3. **Listar Reuniões**:
+   O sistema exibe todas as reuniões cadastradas, incluindo seus detalhes, como título, horário e participantes.
 
-2. **Atualizar Reuniões**: Permite que as reuniões existentes sejam atualizadas. O usuário pode modificar o título, horário ou participantes de uma reunião específica, utilizando o ID da reunião. As alterações são enviadas ao backend de forma eficiente.
+4. **Deletar Reunião**:
+   O usuário insere o ID da reunião que deseja excluir. O sistema faz uma requisição ao backend para realizar a exclusão.
 
-3. **Listar Reuniões**: Exibe uma lista de todas as reuniões cadastradas no sistema, permitindo ao usuário visualizar rapidamente as informações mais relevantes, como título, horário de início e participantes.
+## Desafios e Dificuldades Encontradas
 
-4. **Excluir Reuniões**: Permite ao usuário excluir reuniões do sistema através de um identificador único (ID). A funcionalidade garante que apenas reuniões específicas sejam removidas, mantendo a integridade dos dados.
+🚧 **Integração com Backend**:
+Uma das principais dificuldades foi integrar o front-end com um backend simulado de maneira eficiente. A comunicação entre o React e o backend foi realizada utilizando a biblioteca **Axios**, que necessitou de atenção para garantir que os dados estivessem no formato correto antes de serem enviados ou recebidos.
 
-5. **Validação de Dados**: Durante o processo de adição e atualização de reuniões, a aplicação realiza validações básicas, como verificar se todos os campos foram preenchidos corretamente antes de enviar os dados ao backend.
+⚙️ **Validação de Formulários**:
+Garantir que os dados inseridos nos formulários fossem válidos e no formato correto foi um desafio, especialmente ao lidar com datas e horários, além de converter os participantes em um formato específico.
 
-6. **Formatação de Dados**: Antes de enviar os dados para o backend, a aplicação formata a lista de participantes, convertendo-a para um formato adequado (com chaves `{}`), o que garante a integridade dos dados no armazenamento.
+🔄 **Gerenciamento de Estado**:
+O gerenciamento do estado do React foi um dos pontos de aprendizado, já que precisávamos garantir que as informações do formulário fossem atualizadas de maneira eficiente, sem causar inconsistências entre as interações do usuário e o backend.
 
-## Aplicação Real no Mercado de Trabalho
+## Conhecimentos Adquiridos
 
-Este tipo de aplicação tem uma aplicação direta em diversos setores corporativos e empresariais, onde a organização de reuniões é uma tarefa constante. Entre as possíveis áreas de uso, destacam-se:
+📘 **Gerenciamento de Estado no React**:
+Aprendi a usar os **Hooks do React** (como `useState` e `useEffect`) para gerenciar o estado da aplicação e executar ações assíncronas, como chamadas a APIs.
 
-- **Empresas e Corporações**: Ferramentas de gestão de reuniões são essenciais para equipes que precisam se coordenar frequentemente. A automação deste processo melhora a eficiência e diminui erros de comunicação.
+🌍 **Integração Front-End e Back-End**:
+A integração entre o front-end e o backend, através da biblioteca **Axios**, foi essencial para realizar as operações de adicionar, atualizar, listar e deletar reuniões.
 
-- **Gestão de Equipes Remotas**: Com o aumento do trabalho remoto, a capacidade de gerenciar reuniões de forma online se tornou ainda mais crucial. Este sistema pode ser utilizado para gerenciar reuniões virtuais e presenciais de forma centralizada.
+💡 **Validação e Formatação de Dados**:
+Aprendi como validar e formatar os dados antes de enviá-los ao backend, como no caso da formatação das datas e participantes, que exigiram um cuidado especial para garantir a consistência dos dados.
 
-- **Setores de Atendimento ao Cliente**: Empresas que lidam com clientes frequentemente precisam organizar reuniões para discutir orçamentos, entregas ou outros assuntos. A plataforma pode ser adaptada para essa realidade, oferecendo uma interface para agendar e gerenciar essas interações.
+## Ferramentas, Frameworks e Bibliotecas Utilizadas
 
-- **Consultorias e Agências**: O gerenciamento de reuniões com clientes e equipes é uma atividade central nesses setores. A aplicação oferece uma maneira eficiente de centralizar todas as informações de compromissos e encontros.
+- **React**: Framework principal para a criação da interface de usuário.
+- **Axios**: Biblioteca para realizar requisições HTTP assíncronas para o backend.
+- **useState**: Hook do React utilizado para gerenciar o estado dos dados.
+- **useEffect**: Hook utilizado para executar operações assíncronas, como buscar reuniões do backend.
+- **JSON**: Formato de dados utilizado para simular o armazenamento das reuniões no backend.
 
-## Desafios Durante o Desenvolvimento
+## Aplicação no Mundo Real
 
-### 1. **Formato de Entrada dos Participantes**
+Esse tipo de sistema pode ser utilizado em empresas e organizações para gerenciar reuniões de equipes, agendar compromissos ou até mesmo para sistemas de gestão de eventos. Além disso, ele pode ser expandido com funcionalidades como notificações de lembretes para os participantes ou integração com calendários externos.
 
-Um dos maiores desafios foi garantir que os dados dos participantes fossem corretamente formatados antes de serem enviados para o backend. O usuário deveria inserir os participantes em um formato simples, como "João, Pedro, Ana", e o sistema precisava transformar essa entrada em um formato estruturado e adequado para o armazenamento. Para isso, foi necessário utilizar técnicas avançadas de manipulação de strings, como o uso de `split()`, `map()` e `join()`.
+### Exemplos de Aplicação:
 
-### 2. **Conversão de Data e Hora**
-
-Outro desafio importante foi a conversão dos dados de data e hora, uma vez que o usuário insere as informações no formato `datetime-local`. Para garantir que os dados fossem enviados ao backend de forma correta, foi necessário substituir o caractere 'T' por um espaço e adicionar os segundos ao timestamp, garantindo que o formato fosse compatível com o que o backend espera.
-
-### 3. **Gerenciamento de Estado no React**
-
-O gerenciamento de estado em uma aplicação React pode se tornar complexo, especialmente quando múltiplos campos precisam ser manipulados simultaneamente. Foi necessário ter uma compreensão clara de como o `useState` funciona, mantendo os dados consistentes e sincronizados com a interface de usuário.
-
-### 4. **Comunicação Eficiente com o Backend**
-
-A integração entre o frontend e o backend utilizando Axios apresentou alguns desafios, principalmente no que diz respeito ao tratamento de erros e à garantia de que as requisições fossem feitas de maneira assíncrona. A aplicação utilizou promessas e `async/await` para garantir que o fluxo da aplicação fosse mantido sem bloqueios.
-
-### 5. **Desempenho e Escalabilidade**
-
-Embora a aplicação seja simples, é importante garantir que ela seja escalável para suportar um grande número de usuários e reuniões. Durante o desenvolvimento, houve a necessidade de otimizar algumas operações para garantir que o desempenho da aplicação fosse mantido mesmo com a quantidade de dados aumentando.
+- **Empresas**: Controle de reuniões entre departamentos.
+- **Escolas e Universidades**: Agendamento de reuniões com alunos ou professores.
+- **Eventos e Conferências**: Gerenciamento de palestras e sessões em eventos.
 
 ## Conclusão
 
-Este projeto representa uma solução prática e eficiente para o gerenciamento de reuniões em ambientes corporativos. Com uma interface fácil de usar e uma integração simples com o backend, ele oferece uma solução robusta para quem precisa gerenciar reuniões de forma eficaz.
+Este projeto foi uma excelente oportunidade para aprofundar meus conhecimentos em **React** e aprender mais sobre como integrar front-end com back-end. Além disso, foi uma ótima maneira de praticar a manipulação de dados e entender como criar sistemas simples de gerenciamento com uma interface amigável.
 
-As tecnologias escolhidas são amplamente utilizadas no mercado, o que não só garante a qualidade do projeto, mas também prepara os desenvolvedores para as demandas do mercado de trabalho. A aplicação é um exemplo de como um sistema simples pode ser eficaz ao integrar uma interface amigável, manipulação eficiente de dados e uma comunicação clara com o backend.
-
-Com o uso de **React.js**, **Axios** e **JavaScript**, o projeto aborda conceitos modernos de desenvolvimento web, como APIs RESTful, gestão de estado e manipulação de dados. O sucesso deste projeto demonstra a viabilidade de criar soluções eficientes para o gerenciamento de tarefas cotidianas no ambiente corporativo, sendo uma ótima base para futuras melhorias e integrações.
+Este foi um grande passo para consolidar o que aprendi sobre desenvolvimento web e me preparar para desafios ainda maiores no desenvolvimento de aplicações reais!
